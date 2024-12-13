@@ -4,9 +4,10 @@ import { CopyIcon, CheckIcon } from 'lucide-react';
 
 interface TestOutputProps {
   testCases: TestCase[];
+  explanation: string;
 }
 
-export function TestOutput({ testCases }: TestOutputProps) {
+export function TestOutput({ testCases, explanation }: TestOutputProps) {
   const [copiedIndex, setCopiedIndex] = React.useState<number | null>(null);
 
   const handleCopy = async (code: string, index: number) => {
@@ -44,7 +45,20 @@ export function TestOutput({ testCases }: TestOutputProps) {
         </div>
       ))}
       
-      
+      {explanation && (
+        <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+          <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-4">
+            Explanation
+          </h3>
+          <div className="prose dark:prose-invert max-w-none">
+            {explanation.split('\n').map((line, i) => (
+              <p key={i} className="text-gray-700 dark:text-gray-300">
+                {line}
+              </p>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

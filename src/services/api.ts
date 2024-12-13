@@ -74,11 +74,12 @@ function createPrompt(config: TestConfig, input: CodeInput): string {
 
 function parseResponse(content: string): ParsedResponse {
   const testCasesMatch = content.match(/\[TEST_CASES\]([\s\S]*?)\[END_TEST_CASES\]/);
-  
+  const explanationMatch = content.match(/\[EXPLANATION\]([\s\S]*?)\[END_EXPLANATION\]/);
 
   const testCases = testCasesMatch ? parseTestCases(testCasesMatch[1]) : [];
+  const explanation = explanationMatch ? explanationMatch[1].trim() : '';
 
-  return { testCases };
+  return { testCases, explanation };
 }
 
 function parseTestCases(content: string): TestCase[] {

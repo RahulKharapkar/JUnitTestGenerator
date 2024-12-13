@@ -13,8 +13,8 @@ import { LoadingSpinner } from './components/LoadingSpinner';
 function App() {
   const { theme, toggleTheme } = useTheme();
   const [config, setConfig] = useState<TestConfig>({
-    junitVersion: '5.9.2',
-    mockitoVersion: '5.3.1',
+    junitVersion: '5.x',
+    mockitoVersion: '4.x',
   });
 
   const [input, setInput] = useState<CodeInput>({
@@ -25,7 +25,7 @@ function App() {
     expectedBehavior: '',
   });
 
-  const { testCases,  loading, error, generateTests, clearError } = useTestGenerator();
+  const { testCases, explanation, loading, error, generateTests, clearError } = useTestGenerator();
 
   const handleSubmit = () => {
     generateTests(config, input);
@@ -79,7 +79,7 @@ function App() {
               {loading ? (
                 <LoadingSpinner />
               ) : (
-                <TestOutput testCases={testCases} />
+                <TestOutput testCases={testCases} explanation={explanation} />
               )}
             </div>
           </div>
