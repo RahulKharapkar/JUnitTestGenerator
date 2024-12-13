@@ -13,7 +13,7 @@ import { LoadingSpinner } from './components/LoadingSpinner';
 function App() {
   const { theme, toggleTheme } = useTheme();
   const [config, setConfig] = useState<TestConfig>({
-    junitVersion: '5.x',
+    junitVersion: '5.x (Jupiter)',
     mockitoVersion: '4.x',
   });
 
