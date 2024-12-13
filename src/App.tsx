@@ -24,7 +24,7 @@ function App() {
     expectedBehavior: '',
   });
 
-  const { testCases, explanation, loading, error, generateTests, clearError } = useTestGenerator();
+  const { testCases,  loading, error, generateTests, clearError } = useTestGenerator();
 
   const handleSubmit = () => {
     generateTests(config, input);
@@ -80,7 +80,7 @@ function App() {
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 dark:border-indigo-400"></div>
                 </div>
               ) : (
-                <TestOutput testCases={testCases} explanation={explanation} />
+                <TestOutput testCases={testCases}/>
               )}
             </div>
           </div>

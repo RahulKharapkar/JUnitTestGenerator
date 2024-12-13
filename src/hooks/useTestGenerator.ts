@@ -4,7 +4,6 @@ import { generateTestCases, ApiError } from '../services/api';
 
 interface TestGeneratorState {
   testCases: ParsedResponse['testCases'];
-  explanation: string;
   loading: boolean;
   error: string | null;
 }
@@ -12,7 +11,6 @@ interface TestGeneratorState {
 export function useTestGenerator() {
   const [state, setState] = useState<TestGeneratorState>({
     testCases: [],
-    explanation: '',
     loading: false,
     error: null,
   });
@@ -24,14 +22,13 @@ export function useTestGenerator() {
       const response = await generateTestCases(config, input);
       setState({ 
         testCases: response.testCases, 
-        explanation: response.explanation,
+       
         loading: false, 
         error: null 
       });
     } catch (error) {
       setState({
         testCases: [],
-        explanation: '',
         loading: false,
         error: error instanceof ApiError ? error.message : 'An unexpected error occurred'
       });

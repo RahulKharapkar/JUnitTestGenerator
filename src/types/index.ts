@@ -18,7 +18,6 @@ export interface TestCase {
 
 export interface ParsedResponse {
   testCases: TestCase[];
-  explanation: string;
 }
 
 export type Theme = 'light' | 'dark';
