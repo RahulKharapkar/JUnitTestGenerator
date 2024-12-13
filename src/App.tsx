@@ -8,6 +8,7 @@ import { ThemeToggle } from './components/ThemeToggle';
 import { useTestGenerator } from './hooks/useTestGenerator';
 import { useTheme } from './hooks/useTheme';
 import { BeakerIcon } from 'lucide-react';
+import { LoadingSpinner } from './components/LoadingSpinner';
 
 function App() {
   const { theme, toggleTheme } = useTheme();
@@ -74,13 +75,11 @@ function App() {
             <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
               <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
                 3. Generated Test Cases
-              </h2>
+                </h2>
               {loading ? (
-                <div className="flex items-center justify-center h-64">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 dark:border-indigo-400"></div>
-                </div>
+                <LoadingSpinner />
               ) : (
-                <TestOutput testCases={testCases}/>
+                <TestOutput testCases={testCases} />
               )}
             </div>
           </div>
